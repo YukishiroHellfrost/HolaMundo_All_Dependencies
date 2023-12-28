@@ -23,6 +23,7 @@ import com.Primer_Spring.app.service.UserService;
 //import ch.qos.logback.core.joran.util.beans.BeanUtil; Para el 2do metodo de modificar
 
 @RestController
+//Esta notación especifica la dirección url de la Api seria Localhost:<puerto>/api/users
 @RequestMapping("/api/users")
 public class UserController {
 
