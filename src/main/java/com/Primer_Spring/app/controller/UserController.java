@@ -35,10 +35,12 @@ public class UserController {
 	
 	//Create
 	@PostMapping
+	//Request body Lo que hace es tomar una respuesta que le das
 	public ResponseEntity<?>create (@RequestBody User user){
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
 	}
 	//Read
+	//En este caso lo q está entre parentesis es para denotar y q si se agrega en la URL un ID se ejecutará
 	@GetMapping("/{id}")
 	public ResponseEntity<?>read(@PathVariable(value="id") Long userid){
 		Optional<User>op=userService.findById(userid);
