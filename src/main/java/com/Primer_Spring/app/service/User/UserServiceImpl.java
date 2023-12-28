@@ -1,4 +1,4 @@
-package com.Primer_Spring.app.service;
+package com.Primer_Spring.app.service.User;
 
 import java.util.Optional;
 
@@ -10,9 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Primer_Spring.app.entity.User;
 import com.Primer_Spring.app.repository.UserRepository;
-/*
- * Transactional(readOnly=true) Define los q solo se leen y los  metodos que proximamente seran de get put delete post
- * */
 
 @Service
 public class UserServiceImpl implements UserService {

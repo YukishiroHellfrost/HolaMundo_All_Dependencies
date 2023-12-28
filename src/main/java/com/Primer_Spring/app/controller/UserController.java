@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Primer_Spring.app.entity.User;
-import com.Primer_Spring.app.service.UserService;
+import com.Primer_Spring.app.service.User.UserService;
 
 /*
  * Notación GetMapping -> Se refiere a la operación get de las api que sería para enviar informacion propia de la API

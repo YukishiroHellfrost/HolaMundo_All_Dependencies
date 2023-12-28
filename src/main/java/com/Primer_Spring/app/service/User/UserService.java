@@ -1,4 +1,4 @@
-package com.Primer_Spring.app.service;
+package com.Primer_Spring.app.service.User;
 
 
 import java.util.Optional;
