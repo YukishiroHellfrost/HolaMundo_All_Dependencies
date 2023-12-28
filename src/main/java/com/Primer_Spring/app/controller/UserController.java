@@ -20,6 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Primer_Spring.app.entity.User;
 import com.Primer_Spring.app.service.UserService;
 
+/*
+ * Notación GetMapping -> Se refiere a la operación get de las api que sería para enviar informacion propia de la API
+ * Notación PutMapping -> Se refiere a la operación put de las api que sería usada para actualizar elementos de  la BD
+ * Notación PostMapping -> Se refiere a la operación post de las api que sería usada para mandar información para ser procesada por la API
+ * Notación DeleteMapping ->Se refiere a la operación delete de las api que se encarga de eliminar algo procesado por la API
+ * */
 //import ch.qos.logback.core.joran.util.beans.BeanUtil; Para el 2do metodo de modificar
 
 @RestController
