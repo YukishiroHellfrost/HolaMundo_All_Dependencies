@@ -36,7 +36,7 @@ public class UserController {
 	public UserController() {
 		// TODO Auto-generated constructor stub
 	}
-	@Autowired
+	@Autowired(required=true)
 	private UserService userService;
 	
 	//Create

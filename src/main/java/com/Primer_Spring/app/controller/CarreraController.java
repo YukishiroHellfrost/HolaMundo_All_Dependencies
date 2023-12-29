@@ -18,16 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Primer_Spring.app.entity.Carrera;
-import com.Primer_Spring.app.entity.User;
 import com.Primer_Spring.app.service.Carrera.CarreraService;
 
 @RestController
 @RequestMapping("/api/Carrera")
 public class CarreraController {
-@Autowired
+@Autowired(required=true)
 private CarreraService carreraService;
 	public CarreraController() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@PostMapping

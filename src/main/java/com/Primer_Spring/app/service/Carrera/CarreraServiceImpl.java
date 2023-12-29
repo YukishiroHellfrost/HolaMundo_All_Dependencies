@@ -12,7 +12,7 @@ import com.Primer_Spring.app.repository.CarreraRepository;
 
 public class CarreraServiceImpl implements CarreraService{
 	
-	@Autowired
+	@Autowired(required = true)
 	private CarreraRepository carreraRepository;
 	
 	public CarreraServiceImpl() {
