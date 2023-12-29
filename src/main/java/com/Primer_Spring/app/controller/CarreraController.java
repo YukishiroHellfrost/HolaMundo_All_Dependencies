@@ -17,27 +17,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.Primer_Spring.app.entity.Carrera;
 import com.Primer_Spring.app.service.Carrera.CarreraService;
 
 @RestController
 @RequestMapping("/api/Carrera")
 public class CarreraController {
-@Autowired(required=true)
+@Autowired
 private CarreraService carreraService;
 	public CarreraController() {
 	}
 
 	@PostMapping
-	public ResponseEntity<?>create(@RequestBody Carrera carrera){
-		return ResponseEntity.status(HttpStatus.OK).body(carreraService.save(carrera));
+	public ResponseEntity<?>create (@RequestBody Carrera carrera){
+		return ResponseEntity.status(HttpStatus.CREATED).body(carreraService.save(carrera));
 	}
 	@GetMapping("/{id}")
-	public ResponseEntity<?>read(@PathVariable (value="id")Long Carrera_id){
-		Optional<Carrera>optionalCarrera=carreraService.findById(Carrera_id);
-		if(optionalCarrera.isEmpty())
+	public ResponseEntity<?>read(@PathVariable(value="id") Long carrera_id){
+		Optional<Carrera>op=carreraService.findById(carrera_id);
+		if(!op.isPresent()) {
 			return ResponseEntity.notFound().build();
-		return ResponseEntity.ok( optionalCarrera);
+		}else
+		return	ResponseEntity.ok(op);
+		
 	}
 	@PutMapping("/{id}")
 	public ResponseEntity<?>update(@PathVariable(value="id")Long id_Carrera,@RequestBody Carrera carrera){
@@ -47,26 +50,25 @@ private CarreraService carreraService;
 				optionalCarrera.get().setNombre(carrera.getNombre());
 			if(carrera.getCantidad_annyos()!=0)
 				optionalCarrera.get().setCantidad_annyos(carrera.getCantidad_annyos());
-				return ResponseEntity.status(HttpStatus.OK).body(carreraService.save(carrera));
+				return ResponseEntity.status(HttpStatus.OK).body(carreraService.save(optionalCarrera.get()));
 		}else
 			return ResponseEntity.notFound().build();
 		
 	}
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?>delete(@PathVariable(value="id")Long id_carrera){
-		Optional<Carrera>optionalcarrera=carreraService.findById(id_carrera);
-		if(optionalcarrera.isPresent()) {
-		 carreraService.DeleteById(id_carrera);
-			return ResponseEntity.ok().build();
-		}else {
+	public ResponseEntity<?>delete(@PathVariable(value="id") Long userId){
+		Optional<Carrera>carrera=carreraService.findById(userId);
+		if(carrera.isEmpty()) {
 			return ResponseEntity.notFound().build();
-		}
+		}else
+			carreraService.DeleteById(userId);
+		return ResponseEntity.ok().build();
 	}
 	@GetMapping
-	public  List<Carrera>findAll(){
-		List<Carrera>carrerasrs=StreamSupport.stream(carreraService.findAll().spliterator(), false)
+	public List<Carrera>readAll(){
+		List<Carrera>carreras=StreamSupport.stream(carreraService.findAll().spliterator(), false)
 				.collect(Collectors.toList());
-		return carrerasrs;
+		return carreras;
 	}
 
 }

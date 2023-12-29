@@ -5,14 +5,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.Primer_Spring.app.entity.Carrera;
 import com.Primer_Spring.app.repository.CarreraRepository;
-
+@Service
 public class CarreraServiceImpl implements CarreraService{
 	
-	@Autowired(required = true)
+	@Autowired()
 	private CarreraRepository carreraRepository;
 	
 	public CarreraServiceImpl() {
